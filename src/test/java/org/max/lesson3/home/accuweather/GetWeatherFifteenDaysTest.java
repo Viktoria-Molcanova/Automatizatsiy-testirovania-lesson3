@@ -15,7 +15,7 @@ import static io.restassured.RestAssured.given;
 @Feature("Получение погоды на 15 дней")
 public class GetWeatherFifteenDaysTest extends AccuweatherAbstractTest {
 
-    @Description("Получение погоды на 15 дней")
+    @Description("Code 200")
     @Severity(SeverityLevel.NORMAL)
     @Story("Получение погоды")
     @Owner("Виктория М.")
@@ -23,12 +23,12 @@ public class GetWeatherFifteenDaysTest extends AccuweatherAbstractTest {
     @Issue("BUG-1234")
 
     @Test
-    void getWeatherFifteenDays_shouldReturn() {
+    void GetLocationTest_shouldReturn() {
 
         Weather response = given()
                 .queryParam("apikey", getApiKey())
                 .when()
-                .get(getBaseUrl()+"/forecasts/v1/daily/5day/290396")
+                .get(getBaseUrl()+"/forecasts/v1/daily/15day/290396")
                 .then()
                 .statusCode(200)
                 .time(Matchers.lessThan(2000l))
@@ -36,14 +36,14 @@ public class GetWeatherFifteenDaysTest extends AccuweatherAbstractTest {
                 .response()
                 .body().as(Weather.class);
 
-        Assertions.assertEquals(5,response.getDailyForecasts().size());
+        Assertions.assertEquals(15,response.getDailyForecasts().size());
     }
-    @DisplayName("IngredientSubstitutesTest")
-    @Description("GET IngredientSubstitutes")
+    @DisplayName("Ошибка 401")
+    @Description("GET ")
     @Link("")
     @Severity(SeverityLevel.NORMAL)
     @Owner("Виктория М.")
-    @Story(value = "Тестирование метода IngredientSubstitutes")
+    @Story(value = "Тестирование метода getWeatherFifteenDays_missingApiKey_shouldReturn401")
     @Test
     void getWeatherFifteenDays_missingApiKey_shouldReturn401() {
 
@@ -53,12 +53,12 @@ public class GetWeatherFifteenDaysTest extends AccuweatherAbstractTest {
                 .then()
                 .statusCode(401);
     }
-    @DisplayName("IngredientSubstitutesTest")
-    @Description("GET IngredientSubstitutes")
+    @DisplayName("getWeatherFifteenDays_NotFound_shouldReturn404")
+    @Description("GET ")
     @Link("")
     @Severity(SeverityLevel.NORMAL)
     @Owner("Виктория М.")
-    @Story(value = "Тестирование метода IngredientSubstitutes")
+    @Story(value = "Тестирование метода getWeatherFifteenDays_NotFound_shouldReturn404")
     @Test
 
     void getWeatherFifteenDays_NotFound_shouldReturn404() {
