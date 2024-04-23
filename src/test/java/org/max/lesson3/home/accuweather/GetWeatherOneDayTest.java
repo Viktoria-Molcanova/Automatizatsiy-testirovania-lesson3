@@ -12,9 +12,9 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 @Epic("Прогноз погоды")
-@Feature("Получение погоды на 15 дней")
+@Feature("Получение погоды на 1 день")
 public class GetWeatherOneDayTest extends AccuweatherAbstractTest {
-    @Description("Получение погоды на 15 дней")
+    @Description("Получение погоды на 1 день")
     @Severity(SeverityLevel.NORMAL)
     @Story("Получение погоды")
     @Owner("Виктория М.")
@@ -37,7 +37,7 @@ public class GetWeatherOneDayTest extends AccuweatherAbstractTest {
 
         Assertions.assertEquals(1, response.getDailyForecasts().size());
     }
-    @Description("Получение погоды на 15 дней")
+    @Description("getWeatherOneDay_missingApiKey_shouldReturn401")
     @Severity(SeverityLevel.NORMAL)
     @Story("Получение погоды")
     @Owner("Виктория М.")
@@ -53,7 +53,7 @@ public class GetWeatherOneDayTest extends AccuweatherAbstractTest {
                 .then()
                 .statusCode(401);
     }
-    @Description("Получение погоды на 15 дней")
+    @Description("WeatherOneDay_invalidEndpoint_shouldReturn400")
     @Severity(SeverityLevel.NORMAL)
     @Story("Получение погоды")
     @Owner("Виктория М.")
