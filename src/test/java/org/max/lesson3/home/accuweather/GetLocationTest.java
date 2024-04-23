@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 @Epic("GetLocationTest")
 @Feature("GetLocationTest")
 public class GetLocationTest extends AccuweatherAbstractTest {
-    @Description("Получение погоды на 15 дней")
+    @Description("Получение погоды ")
     @Severity(SeverityLevel.NORMAL)
     @Story("GetLocationTest")
     @Owner("Виктория М.")
