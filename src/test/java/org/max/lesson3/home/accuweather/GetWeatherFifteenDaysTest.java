@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 
 
 @Epic("Прогноз погоды")
-@Feature("Получение погоды на 15 дней")
+@Feature("Получение погоды на 15 день")
 public class GetWeatherFifteenDaysTest extends AccuweatherAbstractTest {
 
     @Description("Code 200")
@@ -53,7 +53,7 @@ public class GetWeatherFifteenDaysTest extends AccuweatherAbstractTest {
                 .then()
                 .statusCode(401);
     }
-    @DisplayName("getWeatherFifteenDays_NotFound_shouldReturn404")
+    @DisplayName("Ошибка 404")
     @Description("GET ")
     @Link("")
     @Severity(SeverityLevel.NORMAL)
